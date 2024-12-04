@@ -1,0 +1,23 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb  # Using an in-memory H2 database for testing
+    driverClassName: org.h2.Driver
+    username: sa
+    password: password
+    platform: h2  # Specify platform for H2
+    dialect: org.hibernate.dialect.H2Dialect
+    initialization-mode: always  # Ensure that the SQL scripts are run at startup
+
+
+  jpa:
+    hibernate:
+      ddl-auto: update  # Automatically update the schema
+    show-sql: true  # Show SQL queries in the console
+    properties:
+      hibernate:
+        format_sql: true
+
+  h2:
+    console:
+      enabled: true  # Enable H2 console for debugging
+      path: /h2-console  # Optional: Customize console path (default is /h2-console)
