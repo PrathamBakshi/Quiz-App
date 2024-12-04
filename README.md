@@ -1,89 +1,195 @@
-# Quiz-App
-QuizApp is a RESTful web application that allows users to take quizzes, submit answers, and track their performance. The application is built using Spring Boot, H2 Database, and follows the MVC architecture.
+# Quiz App
 
-Features
-User Dashboard: View user statistics such as total questions attempted, correct answers, and score percentage.
-Random Question Selection: Fetches a random question for users to answer.
-Answer Submission: Validates user-submitted answers and updates their scores.
-Exception Handling: Handles runtime exceptions gracefully with meaningful error messages.
-In-Memory Database: Uses H2 for quick setup and testing.
-Tech Stack
-Backend: Spring Boot
-Database: H2 (In-Memory)
-ORM: Hibernate (JPA)
-Build Tool: Maven
-Language: Java
-Testing: Built-in support for H2 Console
-Project Structure
-Models
-QuizUser: Represents a quiz participant with attributes like name, score, and correctAnswers.
-Question: Stores quiz questions with options (A, B, C, D) and the correct answer.
-Repositories
-UserRepository: For managing QuizUser entities.
-QuestionRepository: For managing Question entities and fetching random questions.
-Services
-QuizService: Core business logic for user and quiz operations.
-Controllers
-QuizController:
-/api/quiz/dashboard/{userId}: Fetch user dashboard.
-/api/quiz/take/{userId}: Get a random question for the user.
-/api/quiz/submit/{userId}: Submit an answer and update the user's score.
-/api/quiz/end/{userId}: End the quiz and finalize the user's score.
-DTOs
-QuestionResponse: For returning question details to the user.
-SubmitAnswerRequest: For submitting an answer.
-SubmitAnswerResponse: For returning the result of an answer submission.
-ErrorResponse: For structured error handling.
-Database Schema
-Tables
-quiz_user: Stores user data.
-question: Stores quiz questions.
-Sample Data
-The application initializes with sample questions and users. You can customize these in the data.sql file.
+The **Quiz App** is a Spring Boot-based RESTful application designed to manage quizzes. It allows users to attempt questions, track their scores, and view their performance.
 
-Getting Started
-Prerequisites
-Java 11
-Maven
-Steps to Run
-Clone the repository:
+## Features
 
-bash
+- **User Dashboard**: View quiz statistics such as total questions attempted, correct answers, and score percentage.
+- **Take Quiz**: Fetch random questions from the database.
+- **Submit Answer**: Validate answers and update user statistics.
+- **End Quiz**: Finalize quiz and display user results.
+- **Exception Handling**: Graceful error handling with appropriate messages.
+
+---
+
+## Project Structure
+
+### Models
+- **QuizUser**: Represents a quiz user with attributes like name, total questions attempted, correct answers, and score.
+- **Question**: Stores quiz questions with options (A, B, C, D) and the correct answer.
+
+### Controllers
+- **QuizController**: REST API endpoints for quiz operations such as fetching questions, submitting answers, and ending quizzes.
+
+### Services
+- **QuizService**: Business logic for user operations, question retrieval, and answer validation.
+
+### Repositories
+- **UserRepository**: Handles database operations for `QuizUser`.
+- **QuestionRepository**: Handles database operations for `Question`.
+
+### Exception Handling
+- **ExceptionHandlerAdvice**: Centralized exception handling using `@ControllerAdvice`.
+
+### DTOs (Data Transfer Objects)
+- **QuestionResponse**: Represents a question with options for the client.
+- **SubmitAnswerRequest**: Input for submitting an answer.
+- **SubmitAnswerResponse**: Output for answer submission results.
+- **ErrorResponse**: Error details returned in case of exceptions.
+
+---
+
+## Prerequisites
+
+Before running the application, ensure you have:
+- **JDK 11** or higher
+- **Maven** installed
+- (Optional) API testing tools like **Postman**
+
+---
+
+## Installation and Running
+
+### 1. Clone the Repository
+```bash
 git clone https://github.com/PrathamBakshi/Quiz-App.git
 cd Quiz-App
-Build the project:
-
-bash
+```
+### 2. Build the Project
+```bash
 mvn clean install
-Run the application:
-
-bash
-Copy code
+```
+### 3. Run the Application
+```bash
 mvn spring-boot:run
-Access the H2 console (optional):
+```
+The application will be available at:
+- http://localhost:8080
 
-URL: http://localhost:8080/h2-console
-JDBC URL: jdbc:h2:mem:testdb
-Username: sa
-Password: password
-API Documentation (Example URLs):
+### 4. Access the H2 Database
+Visit:
+- http://localhost:8080/h2-console
 
-Get User Dashboard: GET /api/quiz/dashboard/{userId}
-Take Quiz: POST /api/quiz/take/{userId}
-Submit Answer: POST /api/quiz/submit/{userId}
-Error Handling
-The application uses a global exception handler (ExceptionHandlerAdvice) to handle runtime exceptions and provide structured error messages.
+Use the following credentials:
 
-Example Error Response
-json
+- JDBC URL: jdbc:h2:mem:testdb
+- Username: sa
+- Password: password
+  ---
+## API Endpoints
+### User Dashboard
+- GET /api/quiz/dashboard/{userId}
+- Fetch user statistics.
+### Take Quiz
+- POST /api/quiz/take/{userId}
+- Retrieve a random question.
+### Submit Answer
+- POST /api/quiz/submit/{userId}
+- Submit an answer and get feedback.
+- Request Body:
+```json
 {
-  "error": "QuizUser not found with ID: 1"
+  "questionId": 1,
+  "answer": "A"
 }
-Sample SQL Data
-The data.sql file preloads the database with:
+```
+### End Quiz
+- POST /api/quiz/end/{userId}
+- Finalize quiz and view results.
+  ---
+## Database Configuration
+- The application uses an in-memory H2 database. Preloaded sample data is included in src/main/resources/data.sql.
 
-10 Questions
-5 Users
-You can customize the data as needed.
+### Sample User
+- User ID: 1
+- Name: John Doe
+### Sample Questions
+- Example question:
 
+- Question: What is Java?
+  - A: A programming language
+  - B: A type of coffee
+  - C: An operating system
+  - D: A web browser
+  - Correct Answer: A
+---
 
+## Technologies Used
+### Spring Boot
+### Hibernate/JPA
+### H2 Database
+### Maven
+### Java 11
+### Lombok
+---
+## Postman Collection
+
+You can use the Postman collection to test the API endpoints of the Quiz App.
+
+### Access the Postman Collection
+
+The Postman collection is hosted online and can be accessed via the following link:
+
+[QuizApp Postman Collection](https://api.postman.com/collections/29138285-52781ab3-e68d-4749-ad5b-f866404d04ef?access_key=PMAT-01JE6PXCNYGH42PTBZ79C4GCVP)
+
+---
+
+### Steps to Use the Collection
+
+1. Click the link above to view the collection on Postman.
+2. If you have a Postman account, click **Fork Collection** to add it to your workspace.
+3. If you don't have an account, download the collection by clicking on the **Export** option.
+4. Open Postman, and import the collection by clicking **Import** in the top-left corner.
+5. Test the Quiz App API endpoints directly from Postman.
+
+---
+
+### Endpoints Included in the Collection
+
+1. **Get User Dashboard**
+   - **Method**: `GET`
+   - **URL**: `/api/quiz/dashboard/{userId}`
+   - **Description**: Fetch the user statistics and quiz performance.
+
+2. **Take Quiz**
+   - **Method**: `POST`
+   - **URL**: `/api/quiz/take/{userId}`
+   - **Description**: Fetch a random question for the user.
+
+3. **Submit Answer**
+   - **Method**: `POST`
+   - **URL**: `/api/quiz/submit/{userId}`
+   - **Body**:
+     ```json
+     {
+       "questionId": 1,
+       "answer": "A"
+     }
+     ```
+   - **Description**: Submit an answer for evaluation.
+
+4. **End Quiz**
+   - **Method**: `POST`
+   - **URL**: `/api/quiz/end/{userId}`
+   - **Description**: End the quiz and finalize the results.
+
+---
+
+### Example Request and Response
+
+**Endpoint**: Submit Answer  
+**Request Body**:
+```json
+{
+  "questionId": 2,
+  "answer": "B"
+}
+```
+Response:
+
+```json
+Copy code
+{
+  "result": "Correct"
+}
+```
