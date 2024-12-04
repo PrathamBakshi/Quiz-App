@@ -188,7 +188,6 @@ The Postman collection is hosted online and can be accessed via the following li
 Response:
 
 ```json
-Copy code
 {
   "result": "Correct"
 }
