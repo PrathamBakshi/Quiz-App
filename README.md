@@ -12,6 +12,16 @@ The **Quiz App** is a Spring Boot-based RESTful application designed to manage q
 
 ---
 
+## Technologies Used
+- Spring Boot
+- Hibernate/JPA
+- H2 Database
+- Maven
+- Java 11
+- Lombok
+
+---
+
 ## Project Structure
 
 ### Models
@@ -47,26 +57,29 @@ Before running the application, ensure you have:
 - (Optional) API testing tools like **Postman**
 
 ---
+## Running the Application in IntelliJ IDEA
 
-## Installation and Running
+### 1. **Clone the Repository**
+   - Open IntelliJ IDEA.
+   - Go to **File** > **New** > **Project from Version Control**.
+   - Enter the URL of the repository: `https://github.com/PrathamBakshi/Quiz-App.git` and click **Clone**.
 
-### 1. Clone the Repository
-```bash
-git clone https://github.com/PrathamBakshi/Quiz-App.git
-cd Quiz-App
-```
-### 2. Build the Project
-```bash
-mvn clean install
-```
-### 3. Run the Application
-```bash
-mvn spring-boot:run
-```
-The application will be available at:
-- http://localhost:8080
+### 2. **Open the Project**
+   - After cloning, IntelliJ will automatically open the project.
 
-### 4. Access the H2 Database
+### 3. **Build the Project**
+   - Once the project is opened, IntelliJ will automatically detect the `pom.xml` file. If not, right-click the `pom.xml` file in the **Project** view and select **Add as Maven Project**.
+   - You can build the project by navigating to **Build** > **Build Project** or by clicking the **Build** button on the top toolbar.
+
+### 4. **Run the Application**
+   - Locate the **QuizAppApplication** class in the `src/main/java/com/example/quizapp` directory.
+   - Right-click the `QuizAppApplication.java` file and select **Run 'QuizAppApplication'**.
+
+### 5. **Verify the Application**
+   - After running the application, you should see logs in the **Run** window showing that the Spring Boot application is starting up.
+   - The application should be available locally, typically at `http://localhost:8080`.
+     
+### 6. Access the H2 Database
 Visit:
 - http://localhost:8080/h2-console
 
@@ -76,6 +89,8 @@ Use the following credentials:
 - Username: sa
 - Password: password
   
+### 7. **Stop the Application**
+   - To stop the application, click the red **Stop** button in the **Run** window.
   ---
 ## Postman Collection
 
@@ -161,14 +176,4 @@ Response:
   - D: A web browser
   - Correct Answer: A
 ---
-
-## Technologies Used
-### Spring Boot
-### Hibernate/JPA
-### H2 Database
-### Maven
-### Java 11
-### Lombok
----
-
 
