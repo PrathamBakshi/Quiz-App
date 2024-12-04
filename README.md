@@ -75,53 +75,8 @@ Use the following credentials:
 - JDBC URL: jdbc:h2:mem:testdb
 - Username: sa
 - Password: password
+  
   ---
-## API Endpoints
-### User Dashboard
-- GET /api/quiz/dashboard/{userId}
-- Fetch user statistics.
-### Take Quiz
-- POST /api/quiz/take/{userId}
-- Retrieve a random question.
-### Submit Answer
-- POST /api/quiz/submit/{userId}
-- Submit an answer and get feedback.
-- Request Body:
-```json
-{
-  "questionId": 1,
-  "answer": "A"
-}
-```
-### End Quiz
-- POST /api/quiz/end/{userId}
-- Finalize quiz and view results.
-  ---
-## Database Configuration
-- The application uses an in-memory H2 database. Preloaded sample data is included in src/main/resources/data.sql.
-
-### Sample User
-- User ID: 1
-- Name: John Doe
-### Sample Questions
-- Example question:
-
-- Question: What is Java?
-  - A: A programming language
-  - B: A type of coffee
-  - C: An operating system
-  - D: A web browser
-  - Correct Answer: A
----
-
-## Technologies Used
-### Spring Boot
-### Hibernate/JPA
-### H2 Database
-### Maven
-### Java 11
-### Lombok
----
 ## Postman Collection
 
 You can use the Postman collection to test the API endpoints of the Quiz App.
@@ -133,17 +88,6 @@ The Postman collection is hosted online and can be accessed via the following li
 [QuizApp Postman Collection](https://api.postman.com/collections/29138285-52781ab3-e68d-4749-ad5b-f866404d04ef?access_key=PMAT-01JE6PXCNYGH42PTBZ79C4GCVP)
 
 ---
-
-### Steps to Use the Collection
-
-1. Click the link above to view the collection on Postman.
-2. If you have a Postman account, click **Fork Collection** to add it to your workspace.
-3. If you don't have an account, download the collection by clicking on the **Export** option.
-4. Open Postman, and import the collection by clicking **Import** in the top-left corner.
-5. Test the Quiz App API endpoints directly from Postman.
-
----
-
 ### Endpoints Included in the Collection
 
 1. **Get User Dashboard**
@@ -192,3 +136,32 @@ Response:
   "result": "Correct"
 }
 ```
+
+  ---
+## Database Configuration
+- The application uses an in-memory H2 database. Preloaded sample data is included in src/main/resources/data.sql.
+
+### Sample User
+- User ID: 1
+- Name: John Doe
+### Sample Questions
+- Example question:
+
+- Question: What is Java?
+  - A: A programming language
+  - B: A type of coffee
+  - C: An operating system
+  - D: A web browser
+  - Correct Answer: A
+---
+
+## Technologies Used
+### Spring Boot
+### Hibernate/JPA
+### H2 Database
+### Maven
+### Java 11
+### Lombok
+---
+
+
