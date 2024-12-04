@@ -16,7 +16,7 @@ The **Quiz App** is a Spring Boot-based RESTful application designed to manage q
 
 ### Models
 - **QuizUser**: Represents a quiz user with attributes like name, total questions attempted, correct answers, and score.
-- **Question**: Stores quiz questions with options (A, B, C, D) and the correct answer.
+- **Question**: Stores quiz questions with options (a, b, c, d) and the correct answer.
 
 ### Controllers
 - **QuizController**: REST API endpoints for quiz operations such as fetching questions, submitting answers, and ending quizzes.
